@@ -1,0 +1,41 @@
+version: "2"
+services:
+ redis:
+   image: redis
+   networks:
+     - back-end
+ db:
+   image: postgres:9.4
+   environment:
+     - POSTGRES_HOST_AUTH_METHOD=trust
+   networks:
+     - back-end
+ vote:
+   build: ./vote
+   ports: 
+     - 5000:80
+   networks:
+     - front-end
+     - back-end
+   depends_on:
+     - redis
+ result:
+   build: ./result
+   ports:
+     - 5001:80
+   networks:
+     - front-end
+     - back-end
+   depends_on:
+     - redis
+     - db
+ worker:
+   build: ./worker
+   depends_on:
+     - redis
+     - db
+   networks:
+     - back-end
+networks:
+  front-end:
+  back-end:

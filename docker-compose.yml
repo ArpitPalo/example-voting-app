@@ -1,5 +1,11 @@
 version: '3'
 services:
+ sonarqube:
+  image: sonarqube
+  ports:
+   - 9000:9000
+  volumes:
+   - sonarqube:/opt/sonarqube/
  redis:
    image: redis
    networks:

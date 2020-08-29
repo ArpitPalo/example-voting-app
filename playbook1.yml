@@ -3,4 +3,4 @@
   hosts: localhost
   tasks:
     - name: Run Docker-Compose
-      script: script-ec2.sh
+      script: script.sh

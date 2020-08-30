@@ -2,9 +2,11 @@
   name: Play1
   hosts: target1
   tasks:
-    - name: Run Docker-Compose
+    - name: Authorize-key
       authorized_key:
         user: ec2-user
         state: present
         key: "{{ lookup('file', '/home/ec2-user/keypair') }}"
+    - name: Run Docker-Compose
       script: script.sh
+    

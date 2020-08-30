@@ -1,0 +1,7 @@
+-
+  name: Play1
+  hosts: target1
+  tasks:
+    - name: Run Docker-Compose
+      script: script.sh
+    

@@ -4,7 +4,7 @@ pipeline {
         stage('Build'){
             steps {
                 echo "Build Project"
-                sh label: '', script: 'ansible-playbook playbook1.yml'
+                sh label: '', script: 'ansible-playbook playbook2.yml -i inventory.txt '
             }
         }
     }
